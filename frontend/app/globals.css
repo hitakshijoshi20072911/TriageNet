@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #020617;
+  --bg-surface: #0F172A;
+  --bg-elevated: #141c2e;
+  --bg-card: rgba(15, 23, 42, 0.6);
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #475569;
+  --teal-400: #2DD4BF;
+  --teal-500: #0D9488;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}
+
+:root[data-theme="light"] {
+  --bg-base: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-elevated: #f1f5f9;
+  --bg-card: rgba(255, 255, 255, 0.8);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --teal-400: #0d9488;
+  --teal-500: #0f766e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bg-base);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: Inter, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.7);
+}
+
+/* Selection */
+::selection {
+  background: rgba(13, 148, 136, 0.35);
+  color: #f1f5f9;
+}
+
+/* Accessible focus ring */
+:focus-visible {
+  outline: 2px solid var(--teal-400);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Custom utility classes */
+.font-telemetry {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.card-clinical {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(71, 85, 105, 0.35);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resolve-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(245, 158, 11, 0.15) 0%,
+    rgba(245, 158, 11, 0.4) 50%,
+    rgba(245, 158, 11, 0.15) 100%
+  );
+  background-size: 200% 100%;
+  animation: resolveShimmer 1.8s linear infinite;
+}
+
+@keyframes resolveShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typingDot {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes alertGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+  }
+}
+
+@keyframes pulseTeal {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-up {
+  animation: slideInUp 0.3s ease-out;
+}
+
+.typing-dot {
+  animation: typingDot 1.4s infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.animate-alert-glow {
+  animation: alertGlow 2s infinite;
+}
+
+.animate-pulse-teal {
+  animation: pulseTeal 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Color blind overrides (applied on data-attribute) */
+[data-accessibility="colorblind"] {
+  --esi1-color: #0057B8;
+  --esi2-color: #FF6B35;
+  --esi3-color: #D62598;
+  --esi4-color: #00A896;
+  --esi5-color: #6B5EA8;
+}
+
+/* Light mode overrides */
+:root[data-theme="light"] {
+  --bg-base: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+}
+
+:root[data-theme="light"] body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+}
+
+/* Ensure the theme toggler icon in TopBar updates correctly */
+/* The TopBar already uses darkMode from store; no code change needed if the attribute is set. */
