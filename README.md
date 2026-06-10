@@ -8,6 +8,7 @@
 
 TriageNet is an **agentic AI system** that revolutionizes emergency department triage and patient monitoring through a collaborative swarm of specialized AI agents.
 
+
 The platform continuously analyzes patient vitals, synthesizes medical history, monitors departmental load, and detects subtle deterioration patterns that clinicians may miss during overwhelmed shifts.
 
 ---
