@@ -124,12 +124,14 @@ graph TD
 
 ### 1. Supervisor Agent
 
+
 * Task orchestration
 * Routing to specialist agents
 * Debate enforcement
 * Human-in-the-Loop (HITL) checkpoint management
 
 ### 2. Vitals Analysis Agent
+
 
 * Modified Early Warning Score (MEWS)
 * CUSUM trend analysis
@@ -138,6 +140,7 @@ graph TD
 * Hemodynamic instability prediction
 
 ### 3. History Synthesis Agent
+
 
 * FHIR R4 parsing
 * Medication analysis
