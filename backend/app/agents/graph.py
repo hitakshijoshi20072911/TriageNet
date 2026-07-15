@@ -119,7 +119,7 @@ def create_workflow():
     checkpointer = MemorySaver()
     graph = workflow.compile(checkpointer=checkpointer)
 
-    logger.info("✅ TriageNet LangGraph compiled successfully")
+    logger.info(" TriageNet LangGraph compiled successfully")
     logger.info(f"   Nodes: {list(workflow.nodes.keys())}")
 
     return graph
