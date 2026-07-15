@@ -101,17 +101,17 @@ def context_analysis_agent(state: TriageState) -> TriageState:
         f"ICU beds available: {metrics['available_icu_beds']}",
         f"Predicted wait time: {metrics['predicted_wait_time_min']} minutes",
         f"Context multiplier: {context_multiplier}×"
-        + (" ⚠️ HIGH LOAD" if context_multiplier > 1.4 else ""),
+        + ("  HIGH LOAD" if context_multiplier > 1.4 else ""),
     ]
 
     if metrics["shift_change_in_minutes"] <= 30:
         findings.append(
-            f"⚠️ SHIFT CHANGE IN {metrics['shift_change_in_minutes']} MINUTES — "
+            f" SHIFT CHANGE IN {metrics['shift_change_in_minutes']} MINUTES — "
             "heightened handoff risk"
         )
 
     if metrics["surge_active"]:
-        findings.append("🚨 SURGE PROTOCOL ACTIVE")
+        findings.append(" SURGE PROTOCOL ACTIVE")
 
     # Recommendation
     if context_multiplier >= 1.7:
